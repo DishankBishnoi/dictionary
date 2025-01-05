@@ -88,3 +88,41 @@ async function searchWords() {
     return lan[code] || code;
   }
 }
+
+function toggleSpeechRecognition() {
+    const model = document.getElementById('speechModel');
+    model.style.display = 'flex';
+
+    // start speech recognition process
+
+    startSpeechRecognition();
+
+}
+// function to close speech recognise model
+function closeSpeechModel(){
+    const model = document.getElementById('speechModel');
+    model.style.display='none';
+}
+
+function startSpeechRecognition(){
+    const selectedLan = document.getElementById('languageSelect').value;
+
+    const recognition = new webkitSpeechRecognition();
+
+    recognition.lang = selectedLan;
+    recognition.interimResults = false;
+
+    recognition.onresult = function(event){
+        const result= event.results[0][0].transcript;
+        document.getElementById('wordinput').value = result;
+        closeSpeechModel();
+    }
+    recognition.onerror = function(event){
+        console.error('speech recognise error:',event.error);
+        closeSpeechModel
+    }
+    recognition.onend = function(){
+        console.log('Speech recognise ended.')
+    }
+    recognition.start();
+}
