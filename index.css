@@ -7,7 +7,7 @@
 
 body{
     font-family: sans-serif;
-    background-color: white;
+    background-color: rgba(212, 212, 212, 0.208);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,7 +15,7 @@ body{
 }
 
 .container{
-    background-color: #a2999991;
+    background-color: #78787850;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.467);
     padding: 40px;
